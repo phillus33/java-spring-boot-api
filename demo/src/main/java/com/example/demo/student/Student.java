@@ -7,6 +7,8 @@ import java.time.Period;
 @Entity
 @Table
 public class Student {
+    // we don't want to manually add an id for each student
+    // instead, we should let it be generated automatically in sequence
     @Id
     @SequenceGenerator(
             name = "student_sequence",
@@ -21,19 +23,15 @@ public class Student {
     private String name;
     private String email;
     private LocalDate dob;
+    // since we want to calculate the age depending on date of birth rather than hard coding it
+    // the transient annotation makes it so age is not a hard-coded column in the schema
     @Transient
     private Integer age;
 
     public Student() {
     }
 
-    public Student(Long id, String name, String email, LocalDate dob) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.dob = dob;
-    }
-
+//    since id is generated, we do not need to pass it to Student
     public Student(String name, String email, LocalDate dob) {
         this.name = name;
         this.email = email;

@@ -7,13 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import java.time.LocalDate;
 import java.util.List;
 
+// these are some standard student entries for the database
 @Configuration
 public class StudentConfig {
     @Bean
     CommandLineRunner commandLineRunner(StudentRepository repository) {
         return args -> {
             Student mariam = new Student(
-                    1L,
                     "Mariam",
                     "mariam.jamal@gmail.com",
                     LocalDate.of(2000, 1, 5)

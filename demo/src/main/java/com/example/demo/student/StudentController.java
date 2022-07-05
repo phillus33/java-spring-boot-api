@@ -5,19 +5,24 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// api/v1/student will be our rest endpoint
+// this class contains all the http requests
 @RestController
 @RequestMapping(path = "api/v1/student")
 public class StudentController {
 
     private final StudentService studentService;
 
+//    this is needed for dependency injection
     @Autowired
     public StudentController(StudentService studentService) {
+
         this.studentService = studentService;
     }
 
     @GetMapping
     public List<Student> getStudents() {
+
         return studentService.getStudents();
     }
 
